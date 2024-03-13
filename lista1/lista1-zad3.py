@@ -32,7 +32,6 @@ print(sasiedztwo(mac,1,1,2))
 
 def znajdz(A,w):
     miejsca = []
-    k = A[0][0]
     i, j = A.shape
     for x in range(0,j):
         for z in range(0,i):
