@@ -2,18 +2,18 @@ import numpy as np
 import random
 
 # GENEROWANIE LOSOWEJ MACIERZY
-rz = random.randint(1,3)
-kol = random.randint(1,3)
+rz = random.randint(2,6)
+kol = random.randint(2,6)
 mac = np.random.randint(0,1000,size =(rz,kol))
 print(mac)
 
 def sasiedztwo(A, r, i, j):
     y, x = A.shape
     #wyliczenie rz/kol
-    l = i - r
-    p = i + r + 1
-    g = j + r + 1
-    d = j - r
+    d = i - r
+    g = i + r + 1
+    p = j + r + 1
+    l = j - r
     if l < 0:
         l = 0
     if p > x:
@@ -28,7 +28,7 @@ def sasiedztwo(A, r, i, j):
     wycinek = np.take(wycinek, indeksy_kolumn, axis=1)  
     return wycinek
 
-#print(sasiedztwo(mac,2,2,2))
+print(sasiedztwo(mac,1,1,2))
 
 def znajdz(A,w):
     miejsca = []
@@ -50,11 +50,11 @@ def maksima_lokalne(A):
             if znajdz(otoczenie,wart):
                 maksima.append((y,x))
     return  maksima
-print(maksima_lokalne(mac))
+#print(maksima_lokalne(mac))
 
 def czy_jednomodalna(A):
     if len(maksima_lokalne(A)) == 1:
         return True
     else:
         return False
-print(czy_jednomodalna(mac))
+#print(czy_jednomodalna(mac))
