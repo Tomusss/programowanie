@@ -36,9 +36,9 @@ def diofantyczne_nieujemne(a,b,c):
                 if a*dlax + b*dlay == c:
                     rozwiazania.append((dlax,dlay))
         if rozwiazania:
-            return rozwiazania
-        return None
-#print(diofantyczne_nieujemne(18, 16, 500))
+            return set(rozwiazania)
+        return set([None])
+print(diofantyczne_nieujemne(18, 16, 2))
 
 def diofantyczne_zad(a,b,c):
     if diofantyczne_ma_rozwiązanie(a,b,c):
@@ -52,7 +52,7 @@ def diofantyczne_zad(a,b,c):
         xkk = x
         ykk = y
 
-        for k in range(0,1000):
+        for k in range(-1000,1000):
             xk = x + b/gcd * k
             yk = y - a/gcd * k
             suma = abs(xk) + abs(yk)
@@ -60,17 +60,17 @@ def diofantyczne_zad(a,b,c):
                 sumak = suma
                 xkk = xk
                 ykk = yk
-        return sumak, xkk, ykk
+        return xkk, ykk
     return None
     
-def diof_poprawka(a,b,c):
+"""def diof_poprawka(a,b,c):
     if diofantyczne_zad(a,b,c):
         suma1, xkk1, ykk1 = diofantyczne_zad(a,b,c)
         suma2, xkk2, ykk2 = diofantyczne_zad(b,a,c)
         if suma1 < suma2:
             return xkk1, ykk1
         else:
-            return xkk2, ykk2
+            return xkk2, ykk2"""
     
 
 
@@ -83,5 +83,5 @@ kskok = 84
 dskok = 228
 dom = 430
 horacy = 432
-print(f'Horacy: {int(diof_poprawka(kskok,dskok,horacy)[0])} krótkie, {int(diof_poprawka(kskok,dskok,horacy)[1])} długie')
-print(f'Dom: {diof_poprawka(kskok,dskok,dom)}')
+print(f'Horacy: {int(diofantyczne_zad(kskok,dskok,horacy)[0])} krótkie, {int(diofantyczne_zad(kskok,dskok,horacy)[1])} długie')
+print(f'Dom: {diofantyczne_zad(kskok,dskok,dom)}')
