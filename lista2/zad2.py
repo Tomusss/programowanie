@@ -1,5 +1,6 @@
 import math
 import timeit
+
 def Newton_rekurencja(n, k):
     if k == 0 or k == n:
         return 1
@@ -30,49 +31,77 @@ def Newton_silnia(n, k):
     
 #print(Newton_rekurencja(7,5))
 #print(Newton_iteracja(170,5))
-print(Newton_silnia(23,5))
+#print(Newton_silnia(23,5))
 
-# compute binary search time
+'----------------mierzenie czasu----------------'
+
 def rekurencja_czas():
     SETUP_CODE = '''
 from __main__ import Newton_rekurencja'''
  
     TEST_CODE = '''
-mylist = [x for x in range(10000)]
-find = randint(0, len(mylist))
-binary_search(mylist, find)'''
+Newton_rekurencja(3,2)
+'''
+
+    time = timeit.timeit(setup=SETUP_CODE,
+                          stmt=TEST_CODE)
  
-    # timeit.repeat statement
-    times = timeit.repeat(setup=SETUP_CODE,
-                          stmt=TEST_CODE,
-                          repeat=3,
-                          number=10000)
+    print('Newton_rekurencja(3,2): {}'.format(time))
  
-    # printing minimum exec. time
-    print('Binary search time: {}'.format(min(times)))
+    TEST_CODE2 = '''
+Newton_rekurencja(10,4)
+'''
+
+    time2 = timeit.timeit(setup=SETUP_CODE,
+                          stmt=TEST_CODE2)
  
- 
-# compute linear search time
-def linear_time():
+    print('Newton_rekurencja(10,4): {}'.format(time2))
+
+def iteracja_czas():
     SETUP_CODE = '''
-from __main__ import linear_search
-from random import randint'''
+from __main__ import Newton_iteracja'''
  
     TEST_CODE = '''
-mylist = [x for x in range(10000)]
-find = randint(0, len(mylist))
-linear_search(mylist, find)
-    '''
-    # timeit.repeat statement
-    times = timeit.repeat(setup=SETUP_CODE,
-                          stmt=TEST_CODE,
-                          repeat=3,
-                          number=10000)
+Newton_iteracja(3,2)
+'''
+
+    time = timeit.timeit(setup=SETUP_CODE,
+                          stmt=TEST_CODE)
  
-    # printing minimum exec. time
-    print('Linear search time: {}'.format(min(times)))
+    print('Newton_iteracja(3,2): {}'.format(time))
+ 
+    TEST_CODE2 = '''
+Newton_iteracja(10,4)
+'''
+
+    time2 = timeit.timeit(setup=SETUP_CODE,
+                          stmt=TEST_CODE2)
+ 
+    print('Newton_iteracja(10,4): {}'.format(time2))
+
+def silnia_czas():
+    SETUP_CODE = '''
+from __main__ import Newton_silnia'''
+ 
+    TEST_CODE = '''
+Newton_silnia(3,2)
+'''
+
+    time = timeit.timeit(setup=SETUP_CODE,
+                          stmt=TEST_CODE)
+ 
+    print('Newton_silnia(3,2): {}'.format(time))
+ 
+    TEST_CODE2 = '''
+Newton_silnia(10,4)
+'''
+
+    time2 = timeit.timeit(setup=SETUP_CODE,
+                          stmt=TEST_CODE2)
+ 
+    print('Newton_silnia(10,4): {}'.format(time2))
  
  
-if __name__ == "__main__":
-    linear_time()
-    binary_time()
+#rekurencja_czas()
+#iteracja_czas()
+silnia_czas()

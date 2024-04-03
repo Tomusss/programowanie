@@ -23,7 +23,8 @@ def diofantyczne_rozwiązanie(a,b,c):
     else:
         return None
 
-print(diofantyczne_rozwiązanie(4, 8, 12))
+#print(diofantyczne_rozwiązanie(4, 8, 12))
+
 #podpunkt 3
 def diofantyczne_nieujemne(a,b,c):
     if diofantyczne_ma_rozwiązanie(a,b,c):
@@ -60,6 +61,7 @@ def diofantyczne_zad(a,b,c):
                 xkk = xk
                 ykk = yk
         return sumak, xkk, ykk
+    return None
     
 def diof_poprawka(a,b,c):
     if diofantyczne_zad(a,b,c):
@@ -79,7 +81,7 @@ dom = 430
 horacy = 432'''
 kskok = 84
 dskok = 228
-dom = 11
+dom = 430
 horacy = 432
 print(f'Horacy: {int(diof_poprawka(kskok,dskok,horacy)[0])} krótkie, {int(diof_poprawka(kskok,dskok,horacy)[1])} długie')
 print(f'Dom: {diof_poprawka(kskok,dskok,dom)}')
