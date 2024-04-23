@@ -63,14 +63,6 @@ def diofantyczne_zad(a,b,c):
         return xkk, ykk
     return None
     
-"""def diof_poprawka(a,b,c):
-    if diofantyczne_zad(a,b,c):
-        suma1, xkk1, ykk1 = diofantyczne_zad(a,b,c)
-        suma2, xkk2, ykk2 = diofantyczne_zad(b,a,c)
-        if suma1 < suma2:
-            return xkk1, ykk1
-        else:
-            return xkk2, ykk2"""
     
 
 
@@ -79,9 +71,9 @@ def diofantyczne_zad(a,b,c):
 kskok = 84
 dom = 430
 horacy = 432'''
-kskok = 84
+kskok = 1
 dskok = 228
-dom = 430
+dom = 226
 horacy = 432
 print(f'Horacy: {int(diofantyczne_zad(kskok,dskok,horacy)[0])} krótkie, {int(diofantyczne_zad(kskok,dskok,horacy)[1])} długie')
 print(f'Dom: {diofantyczne_zad(kskok,dskok,dom)}')

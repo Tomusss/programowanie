@@ -1,5 +1,8 @@
 import math
-import timeit
+from time import perf_counter
+from itertools import repeat
+import gc
+import matplotlib.pyplot as plt
 
 def Newton_rekurencja(n, k):
     if k == 0 or k == n:
@@ -25,6 +28,7 @@ def Newton_iteracja(n, k):
     wynik = tab[k]
     return wynik
 
+
 def Newton_silnia(n, k):
     wynik = math.factorial(n)/(math.factorial(n-k)*math.factorial(k))
     return int(wynik)
@@ -35,7 +39,47 @@ def Newton_silnia(n, k):
 
 '----------------mierzenie czasu----------------'
 
-def rekurencja_czas():
+
+def zmierz_raz(f, min_time=0.01):
+    czas = 0
+    ile_razy = 0
+    ile_teraz = 1
+    stan_gc = gc.isenabled()
+    gc.disable()
+    while czas < min_time:
+        if ile_teraz == 1:
+            start = perf_counter()
+            f()
+            stop = perf_counter()
+        else:
+            iterator = repeat(None, ile_teraz)
+            start = perf_counter()
+            for _ in iterator:
+                f()
+            stop = perf_counter()
+        czas = stop-start
+        ile_teraz *= 2
+    if stan_gc:
+        gc.enable()
+    return czas/ile_teraz
+
+nki = [(2**x) for x in range(1,4)]
+czasy1 = [zmierz_raz(lambda: Newton_rekurencja(2**x,math.floor(2**x/2))) for x in range(1,4)]
+czasy2 = [zmierz_raz(lambda: Newton_iteracja(2**x,math.floor(2**x/2))) for x in range(1,4)]
+czasy3 = [zmierz_raz(lambda: Newton_silnia(2**x,math.floor(2**x/2))) for x in range(1,4)]
+
+plt.plot(nki, czasy1, label = "Newton_rekurencja")
+plt.plot(nki, czasy2, label = 'Newton_iteracja')
+plt.plot(nki, czasy3, label = 'Newton_silnia')
+
+plt.xlabel('n')
+plt.ylabel('Czas')
+
+plt.legend()
+
+plt.show()
+
+"""def rekurencja_czas():
     SETUP_CODE = '''
 from __main__ import Newton_rekurencja'''
  
@@ -99,9 +143,9 @@ Newton_silnia(10,4)
     time2 = timeit.timeit(setup=SETUP_CODE,
                           stmt=TEST_CODE2)
  
-    print('Newton_silnia(10,4): {}'.format(time2))
+    print('Newton_silnia(10,4): {}'.format(time2))"""
  
  
 #rekurencja_czas()
 #iteracja_czas()
-silnia_czas()
+#silnia_czas()
