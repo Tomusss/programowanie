@@ -60,8 +60,17 @@ class Gracz(pygame.sprite.Sprite):
         if self.rect.x < 0:
             self.rect.x = 0
 
-#def Pauza():
-   
+# pauza 
+def Pauza():
+    przyciemnienie = pygame.Surface((SZEROKOSC, WYSOKOSC))
+    przyciemnienie.set_alpha(150)
+
+    font = pygame.font.Font(None, 72)
+    pauza_tekst = font.render("PAUZA", True, 'white')
+    pauza_tekst_rect = pauza_tekst.get_rect(center=(SZEROKOSC // 2, WYSOKOSC // 2))
+    
+    screen.blit(przyciemnienie, (0, 0))
+    screen.blit(pauza_tekst, pauza_tekst_rect)
 
 
 
@@ -148,7 +157,9 @@ while dziala:
     screen.blit(wynik_text, (10, 10))
     screen.blit(zycia_text,(10,30))
     screen.blit(poziom_text,(10,50))
-
+    
+    if pauza:
+        Pauza()
 
     pygame.display.update()
 
