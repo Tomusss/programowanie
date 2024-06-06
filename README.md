@@ -1,37 +1,30 @@
-# Mates łapie owoce
+# Owocowy zbiór
 
-Prototyp gry, w której gracz steruje postacią Mateusza, aby łapać spadające owoce i unikać bomb. Gra staje się coraz trudniejsza w miarę zdobywania punktów.
+Prototyp gry, w której gracz steruje koszykiem, aby łapać spadające owoce i unikać bomb. Gra staje się coraz trudniejsza w miarę zdobywania punktów.
 
 ## Instrukcje uruchomienia prototypu
 
-1. **Klonowanie repozytorium:**
-    ```bash
-    git clone https://github.com/yourusername/mates-lapie-owoce.git
-    cd mates-lapie-owoce
-    ```
-
-2. **Instalacja wymaganych bibliotek:**
-    Upewnij się, że masz zainstalowane `pip` oraz Python w wersji 3.6 lub wyższej. Następnie uruchom poniższe polecenie:
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. **Wymagane biblioteki i wersja Pythona:**
+    Upewnij się, że masz zainstalowanego Pythona w wersji 3.6 lub wyższej.
+    Potrzebne biblioteki to:
+   - pygame
+    **Instalacja pygame**
+     ```bash
+     pip install pygame
+     ```
 
 3. **Uruchomienie gry:**
     ```bash
     python main.py
     ```
 
-## Lista wymaganych bibliotek
-
-- Pygame
-
 ## Instrukcje użytkowania
 
 ### Sterowanie
 
-- Strzałka w lewo (`LEFT ARROW`): Przesuń gracza w lewo.
-- Strzałka w prawo (`RIGHT ARROW`): Przesuń gracza w prawo.
-- Spacja (`SPACE`): Wstrzymaj/Wznow grę.
+- Strzałka w lewo : Przesuń koszyk w lewo.
+- Strzałka w prawo : Przesuń koszyk w prawo.
+- Spacja : Wstrzymaj/Wznow grę.
 
 ### Zasady gry
 
@@ -50,4 +43,4 @@ Prototyp gry, w której gracz steruje postacią Mateusza, aby łapać spadające
    - Każdy spadający owoc, który nie zostanie złapany, kosztuje gracza jedno życie.
    - Jeśli liczba żyć spadnie do zera, gra się kończy.
 
-Ciesz się grą i powodzenia!
+Baw się dobrze!
